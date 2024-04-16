@@ -507,7 +507,7 @@ input, select, textarea {
 				line-height: 1;
 				text-transform: none !important;
 				font-family: 'Font Awesome 6 Free';
-				font-weight: 1000;
+				font-weight: 900;
 			}
 
 			input[type="checkbox"] + label:before,
@@ -616,7 +616,7 @@ input, select, textarea {
 			line-height: 1;
 			text-transform: none !important;
 			font-family: 'Font Awesome 6 Free';
-			font-weight: 500;
+			font-weight: 400;
 		}
 
 		.icon > .label {
