@@ -65,24 +65,6 @@
       "inLanguage": "fr-FR"
     },
     {
-      "@type": "Brand",
-      "@id": "https://www.kryptosphere.org/#brand",
-      "name": "KRYPTOSPHERE",
-      "alternateName": ["Kryptosphere", "Cryptosphere"],
-      "url": "https://www.kryptosphere.org/"
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://www.kryptosphere-avocat.com/#organization",
-      "name": "KRYPTOSPHERE AVOCAT",
-      "alternateName": ["Kryptosphere Avocat", "Kryptosphere Legal", "Cryptosphere Avocat"],
-      "url": "https://www.kryptosphere-avocat.com/",
-      "sameAs": [
-        "https://www.linkedin.com/company/kryptosphereavocat/"
-      ],
-      "brand": { "@id": "https://www.kryptosphere.org/#brand" }
-    },
-    {
       "@type": "Person",
       "@id": "https://thibaultlangloisberthelot.github.io/#person",
       "name": "Thibault Langlois-Berthelot",
@@ -91,13 +73,14 @@
       "sameAs": [
         "https://www.linkedin.com/in/kryptosphere/",
         "https://twitter.com/docteurbtc",
-        "https://instagram.com/docteurbtc"
+        "https://www.instagram.com/docteurbtc"
       ],
-      "worksFor": { "@id": "https://www.kryptosphere-avocat.com/#organization" },
-      "affiliation": [
-        { "@id": "https://www.kryptosphere-avocat.com/#organization" },
-        { "@id": "https://www.kryptosphere.org/#brand" }
-      ],
+      "worksFor": {
+        "@id": "https://www.kryptosphere-avocat.com/#brand"
+      },
+      "affiliation": {
+        "@id": "https://www.kryptosphere-avocat.com/#brand"
+      },
       "knowsAbout": [
         "crypto-actifs",
         "blockchain",
@@ -110,7 +93,6 @@
   ]
 }
 </script>
-
 </head>
 
 <body class="is-preload">
@@ -248,4 +230,5 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
