@@ -44,61 +44,73 @@
   </script>
 
   <!-- JSON-LD / SCHEMA.ORG (site personnel -> entité Person reliée au cabinet) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://thibaultlangloisberthelot.github.io/#website",
-        "url": "https://thibaultlangloisberthelot.github.io/",
-        "name": "Thibault Langlois-Berthelot",
-        "inLanguage": "fr-FR"
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://thibaultlangloisberthelot.github.io/#webpage",
-        "url": "https://thibaultlangloisberthelot.github.io/",
-        "name": "Thibault Langlois-Berthelot – Avocat & Docteur en droit",
-        "isPartOf": { "@id": "https://thibaultlangloisberthelot.github.io/#website" },
-        "about": { "@id": "https://thibaultlangloisberthelot.github.io/#person" },
-        "inLanguage": "fr-FR"
-      },
-      {
-        "@type": "Person",
-        "@id": "https://thibaultlangloisberthelot.github.io/#person",
-        "name": "Thibault Langlois-Berthelot",
-        "jobTitle": ["Avocat", "Docteur en droit"],
-        "url": "https://thibaultlangloisberthelot.github.io/",
-        "sameAs": [
-          "https://www.linkedin.com/in/kryptosphere/",
-          "https://twitter.com/docteurbtc",
-          "https://instagram.com/docteurbtc"
-        ],
-        "worksFor": { "@id": "https://www.kryptosphere-avocat.com/#legalservice" },
-        "affiliation": { "@id": "https://www.kryptosphere-avocat.com/#legalservice" },
-        "knowsAbout": [
-          "crypto-actifs",
-          "blockchain",
-          "Web3",
-          "droit du numérique",
-          "RGPD",
-          "intelligence artificielle"
-        ]
-      },
-      {
-        "@type": "LegalService",
-        "@id": "https://www.kryptosphere-avocat.com/#legalservice",
-        "name": "KRYPTOSPHERE AVOCAT",
-        "alternateName": ["Kryptosphere", "Kryptosphere Legal", "Cryptosphere Avocat"],
-        "url": "https://www.kryptosphere-avocat.com/",
-        "sameAs": [
-          "https://www.linkedin.com/company/kryptosphereavocat/"
-        ]
-      }
-    ]
-  }
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://thibaultlangloisberthelot.github.io/#website",
+      "url": "https://thibaultlangloisberthelot.github.io/",
+      "name": "Thibault Langlois-Berthelot",
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://thibaultlangloisberthelot.github.io/#webpage",
+      "url": "https://thibaultlangloisberthelot.github.io/",
+      "name": "Thibault Langlois-Berthelot – Avocat & Docteur en droit",
+      "isPartOf": { "@id": "https://thibaultlangloisberthelot.github.io/#website" },
+      "about": { "@id": "https://thibaultlangloisberthelot.github.io/#person" },
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://www.kryptosphere.org/#brand",
+      "name": "KRYPTOSPHERE",
+      "alternateName": ["Kryptosphere", "Cryptosphere"],
+      "url": "https://www.kryptosphere.org/"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.kryptosphere-avocat.com/#organization",
+      "name": "KRYPTOSPHERE AVOCAT",
+      "alternateName": ["Kryptosphere Avocat", "Kryptosphere Legal", "Cryptosphere Avocat"],
+      "url": "https://www.kryptosphere-avocat.com/",
+      "sameAs": [
+        "https://www.linkedin.com/company/kryptosphereavocat/"
+      ],
+      "brand": { "@id": "https://www.kryptosphere.org/#brand" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://thibaultlangloisberthelot.github.io/#person",
+      "name": "Thibault Langlois-Berthelot",
+      "jobTitle": ["Avocat", "Docteur en droit"],
+      "url": "https://thibaultlangloisberthelot.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/kryptosphere/",
+        "https://twitter.com/docteurbtc",
+        "https://instagram.com/docteurbtc"
+      ],
+      "worksFor": { "@id": "https://www.kryptosphere-avocat.com/#organization" },
+      "affiliation": [
+        { "@id": "https://www.kryptosphere-avocat.com/#organization" },
+        { "@id": "https://www.kryptosphere.org/#brand" }
+      ],
+      "knowsAbout": [
+        "crypto-actifs",
+        "blockchain",
+        "Web3",
+        "droit du numérique",
+        "RGPD",
+        "intelligence artificielle"
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body class="is-preload">
@@ -236,3 +248,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
