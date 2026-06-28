@@ -146,74 +146,121 @@
           <a href="https://hal.science/tel-04190658" target="_blank" rel="noopener" title="La blockchain au regard du droit et de l'identité">thèse de doctorat</a>
           porte sur les évolutions règlementaires et informatiques des crypto-actifs, des technologies blockchains et de l'identité numérique décentralisée.
         </p>
-        <!-- Compteur de citations de la thèse -->
+<!-- Compteur de citations de la thèse -->
 
-<div
-  id="thesis-citations-widget"
-  style="
-    display: flex;
-    justify-content: center;
-    margin: 1.5rem 0;
-  "
->
+<div class="thesis-citations-widget">
   <a
     id="thesis-citations-link"
+    class="thesis-citations-card"
     href="https://www.wikidata.org/wiki/Q140363517"
     target="_blank"
     rel="noopener noreferrer"
     title="Voir les citations recensées"
-    style="
-      display: inline-flex;
-      align-items: center;
-      gap: 0.9rem;
-      padding: 0.75rem 1.15rem;
-      color: inherit;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-    "
-    onmouseover="
-      this.style.transform='translateY(-2px)';
-      this.style.background='rgba(255,255,255,0.12)';
-      this.style.boxShadow='0 9px 24px rgba(0,0,0,0.18)';
-    "
-    onmouseout="
-      this.style.transform='translateY(0)';
-      this.style.background='rgba(255,255,255,0.06)';
-      this.style.boxShadow='0 6px 18px rgba(0,0,0,0.12)';
-    "
   >
     <span
       id="thesis-citations-count"
+      class="thesis-citations-count"
       aria-live="polite"
-      style="
-        min-width: 1.2ch;
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1;
-        text-align: center;
-      "
     >—</span>
 
 ```
 <span
   id="thesis-citations-label"
-  style="
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  "
+  class="thesis-citations-label"
 >Citations recensées</span>
 ```
 
   </a>
 </div>
+
+<style>
+  .thesis-citations-widget {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+
+  .thesis-citations-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    min-width: 320px;
+    padding: 1rem 2rem;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 3px solid #2383ff;
+    border-radius: 28px;
+
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.22),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+
+    text-decoration: none;
+
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .thesis-citations-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.13);
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.28),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+  }
+
+  .thesis-citations-card:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.75);
+    outline-offset: 4px;
+  }
+
+  .thesis-citations-count {
+    min-width: 1.2ch;
+
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+
+    text-align: center;
+  }
+
+  .thesis-citations-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 520px) {
+    .thesis-citations-widget {
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    .thesis-citations-card {
+      width: 100%;
+      min-width: 0;
+      gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      box-sizing: border-box;
+    }
+
+    .thesis-citations-count {
+      font-size: 2.3rem;
+    }
+
+    .thesis-citations-label {
+      font-size: 1rem;
+    }
+  }
+</style>
 
 <script>
   (() => {
@@ -271,10 +318,10 @@
         return response.json();
       })
       .then((data) => {
-        const value =
+        const rawValue =
           data?.results?.bindings?.[0]?.citationCount?.value;
 
-        const citationCount = Number(value || 0);
+        const citationCount = Number(rawValue || 0);
 
         countElement.textContent =
           new Intl.NumberFormat("fr-FR").format(
@@ -306,6 +353,7 @@
       });
   })();
 </script>
+
 
         <p>
           Vous pouvez retrouver certains passages de ma thèse et de mes interventions dans les
