@@ -146,6 +146,167 @@
           <a href="https://hal.science/tel-04190658" target="_blank" rel="noopener" title="La blockchain au regard du droit et de l'identité">thèse de doctorat</a>
           porte sur les évolutions règlementaires et informatiques des crypto-actifs, des technologies blockchains et de l'identité numérique décentralisée.
         </p>
+        <!-- Compteur de citations de la thèse -->
+
+<div
+  id="thesis-citations-widget"
+  style="
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+  "
+>
+  <a
+    id="thesis-citations-link"
+    href="https://www.wikidata.org/wiki/Q140363517"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Voir les citations recensées"
+    style="
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.75rem 1.15rem;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+    "
+    onmouseover="
+      this.style.transform='translateY(-2px)';
+      this.style.background='rgba(255,255,255,0.12)';
+      this.style.boxShadow='0 9px 24px rgba(0,0,0,0.18)';
+    "
+    onmouseout="
+      this.style.transform='translateY(0)';
+      this.style.background='rgba(255,255,255,0.06)';
+      this.style.boxShadow='0 6px 18px rgba(0,0,0,0.12)';
+    "
+  >
+    <span
+      id="thesis-citations-count"
+      aria-live="polite"
+      style="
+        min-width: 1.2ch;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+      "
+    >—</span>
+
+```
+<span
+  id="thesis-citations-label"
+  style="
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  "
+>Citations recensées</span>
+```
+
+  </a>
+</div>
+
+<script>
+  (() => {
+    const query = `
+      SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount)
+      WHERE {
+        {
+          ?citingWork wdt:P2860 wd:Q140363517 .
+        }
+        UNION
+        {
+          SERVICE wdsubgraph:scholarly_articles {
+            ?citingWork wdt:P2860 wd:Q140363517 .
+          }
+        }
+      }
+    `;
+
+    const endpoint = "https://query.wikidata.org/sparql";
+
+    const requestUrl =
+      endpoint +
+      "?query=" +
+      encodeURIComponent(query) +
+      "&format=json";
+
+    const countElement = document.getElementById(
+      "thesis-citations-count"
+    );
+
+    const labelElement = document.getElementById(
+      "thesis-citations-label"
+    );
+
+    const linkElement = document.getElementById(
+      "thesis-citations-link"
+    );
+
+    linkElement.href =
+      "https://query.wikidata.org/#" +
+      encodeURIComponent(query);
+
+    fetch(requestUrl, {
+      headers: {
+        Accept: "application/sparql-results+json"
+      }
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            "Erreur Wikidata : " + response.status
+          );
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        const value =
+          data?.results?.bindings?.[0]?.citationCount?.value;
+
+        const citationCount = Number(value || 0);
+
+        countElement.textContent =
+          new Intl.NumberFormat("fr-FR").format(
+            citationCount
+          );
+
+        labelElement.textContent =
+          citationCount === 1
+            ? "Citation recensée"
+            : "Citations recensées";
+
+        linkElement.setAttribute(
+          "aria-label",
+          citationCount +
+            " " +
+            (
+              citationCount === 1
+                ? "citation recensée"
+                : "citations recensées"
+            )
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+
+        countElement.textContent = "—";
+        labelElement.textContent =
+          "Citations indisponibles";
+      });
+  })();
+</script>
+
         <p>
           Vous pouvez retrouver certains passages de ma thèse et de mes interventions dans les
           <a href="https://www.instagram.com/docteurbtc" target="_blank" rel="noopener" title="Citation de ma thèse dans Le Figaro">médias</a>.
