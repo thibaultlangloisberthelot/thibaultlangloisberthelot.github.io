@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="author" content="Thibault Langlois-Berthelot">
+  <title>Mentions légales &amp; CGU — Thibault Langlois-Berthelot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #FBFBF9;
+      --ink: #1C2431;
+      --ink-soft: #4A5568;
+      --accent: #1F3A6E;
+      --rule: #E3E2DC;
+      --rule-strong: #C9C7BE;
+      --max: 1080px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ---------- En-tête document ---------- */
+    .doc-header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 1.5rem 2.5rem;
+      border-bottom: 3px double var(--rule-strong);
+    }
+
+    .doc-kicker {
+      font-family: "Archivo", system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .doc-header h1 {
+      font-family: "Archivo", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      max-width: 22ch;
+    }
+
+    .doc-meta {
+      margin-top: 1.25rem;
+      font-family: "Archivo", system-ui, sans-serif;
+      font-size: 0.8125rem;
+      color: var(--ink-soft);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- Grille : sommaire + contenu ---------- */
+    .layout {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 4rem;
+    }
+
+    nav.toc {
+      position: sticky;
+      top: 2rem;
+      align-self: start;
+      padding-top: 2.5rem;
+      font-family: "Archivo", system-ui, sans-serif;
+      font-size: 0.8125rem;
+    }
+
+    nav.toc p {
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.6875rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    nav.toc ol { list-style: none; }
+    nav.toc li { border-top: 1px solid var(--rule); }
+    nav.toc li:last-child { border-bottom: 1px solid var(--rule); }
+    nav.toc a {
+      display: block;
+      padding: 0.55rem 0.25rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    nav.toc a:hover { color: var(--accent); }
+
+    main { padding-top: 2.5rem; min-width: 0; }
+
+    /* ---------- Parties & sections ---------- */
+    .part {
+      font-family: "Archivo", system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 3.5rem 0 0.5rem;
+    }
+    .part:first-child { margin-top: 0; }
+
+    section { margin-top: 2.25rem; }
+
+    section h2 {
+      font-family: "Archivo", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1.3125rem;
+      line-height: 1.3;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 1rem;
+    }
+
+    section h2 .num {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    section h3 {
+      font-family: "Archivo", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    p + p { margin-top: 0.9rem; }
+
+    ul { margin: 0.75rem 0 0.75rem 1.25rem; }
+    li + li { margin-top: 0.35rem; }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      padding: 1.1rem 1.35rem;
+      margin: 1rem 0;
+    }
+    .card p + p { margin-top: 0.4rem; }
+
+    address { font-style: normal; }
+
+    footer.doc-footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.5rem;
+      border-top: 3px double var(--rule-strong);
+      font-family: "Archivo", system-ui, sans-serif;
+      font-size: 0.8125rem;
+      color: var(--ink-soft);
+    }
+
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; gap: 0; }
+      nav.toc { position: static; padding-top: 2rem; }
+      .doc-header { padding-top: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="doc-header">
+    <p class="doc-kicker">thibaultlangloisberthelot.github.io</p>
+    <h1>Mentions légales &amp; conditions générales d'utilisation</h1>
+    <div class="doc-meta">
+      <span>Dernière mise à jour&nbsp;: 18 juillet 2026</span>
+      <span>Droit applicable&nbsp;: français</span>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <nav class="toc" aria-label="Sommaire">
+      <p>Sommaire</p>
+      <ol>
+        <li><a href="#editeur">1. Éditeur du site</a></li>
+        <li><a href="#hebergeur">2. Hébergement</a></li>
+        <li><a href="#pi">3. Propriété intellectuelle</a></li>
+        <li><a href="#contenu">4. Contenu du site</a></li>
+        <li><a href="#acces">5. Accès &amp; responsabilité</a></li>
+        <li><a href="#liens">6. Liens hypertextes</a></li>
+        <li><a href="#donnees">7. Données personnelles</a></li>
+        <li><a href="#cookies">8. Cookies</a></li>
+        <li><a href="#droit">9. Droit applicable</a></li>
+        <li><a href="#modif">10. Modification</a></li>
+      </ol>
+    </nav>
+
+    <main>
+
+      <p class="part">Partie I — Mentions légales</p>
+
+      <section id="editeur">
+        <h2><span class="num">1</span>Éditeur et directeur de la publication</h2>
+        <div class="card">
+          <address>
+            <p><strong>Thibault Langlois-Berthelot</strong> — éditeur et directeur de la publication</p>
+            <p>Courriel&nbsp;: <a href="mailto:thibault.langloisberthelot@kedgebs.com">thibault.langloisberthelot@kedgebs.com</a></p>
+            <p>Site&nbsp;: <a href="https://thibaultlangloisberthelot.github.io">thibaultlangloisberthelot.github.io</a> (ci-après le «&nbsp;Site&nbsp;»)</p>
+          </address>
+        </div>
+        <p>Le Site est un site personnel, édité à titre non professionnel. Sa réalisation est inspirée du gabarit «&nbsp;Dimension&nbsp;» par HTML5&nbsp;UP.</p>
+      </section>
+
+      <section id="hebergeur">
+        <h2><span class="num">2</span>Hébergement</h2>
+        <div class="card">
+          <address>
+            <p><strong>GitHub, Inc.</strong> — service GitHub Pages</p>
+            <p>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</p>
+            <p>Téléphone&nbsp;: +1&nbsp;(877)&nbsp;448-4820 — <a href="https://pages.github.com" rel="noopener">pages.github.com</a></p>
+          </address>
+        </div>
+        <p>L'hébergeur étant établi aux États-Unis, les conditions d'un éventuel transfert de données hors de l'Union européenne sont précisées à l'article&nbsp;7.</p>
+      </section>
+
+      <section id="pi">
+        <h2><span class="num">3</span>Propriété intellectuelle</h2>
+        <p>La structure générale du Site ainsi que, de façon non limitative, les textes, logos, données et éléments graphiques, animés ou non, qui le composent, sont protégés par le droit de la propriété intellectuelle, en particulier le droit d'auteur (articles L.&nbsp;111-1 et suivants du Code de la propriété intellectuelle).</p>
+        <p>Toute représentation ou reproduction, totale ou partielle, du Site ou de l'un de ses éléments, sans l'autorisation préalable et écrite de l'Éditeur, est interdite et constituerait une contrefaçon sanctionnée par les articles L.&nbsp;335-2 et suivants du Code de la propriété intellectuelle.</p>
+        <p>Le visiteur du Site (ci-après le «&nbsp;Visiteur&nbsp;») ne dispose sur les informations diffusées que d'un droit d'usage privé, personnel et non transmissible. Toute réutilisation autorisée doit mentionner la source.</p>
+      </section>
+
+      <p class="part">Partie II — Conditions générales d'utilisation</p>
+
+      <section id="contenu">
+        <h2><span class="num">4</span>Nature et portée du contenu</h2>
+        <p>Les informations contenues dans le Site sont fournies à titre de simple information générale. Elles ne sauraient remplacer ou se substituer à un conseil ou une consultation de nature juridique, ou de toute autre nature professionnelle.</p>
+        <p>Ces informations sont fournies à titre indicatif, sans aucune garantie, explicite ou implicite, de validité, d'exhaustivité ou d'actualité. Le Visiteur reconnaît les utiliser en l'état et sous sa seule responsabilité.</p>
+      </section>
+
+      <section id="acces">
+        <h2><span class="num">5</span>Accès au site et responsabilité</h2>
+        <p>L'Éditeur ne fournit aucune garantie quant à la disponibilité ou à l'accessibilité du Site, ni quant à l'absence de virus ou d'éléments susceptibles d'altérer, de manière temporaire ou prolongée, son accès ou son utilisation.</p>
+        <p>L'Éditeur ne saurait être tenu responsable&nbsp;:</p>
+        <ul>
+          <li>des dommages, directs ou indirects, causés au matériel ou au système informatique du Visiteur&nbsp;;</li>
+          <li>des pertes ou dommages éventuels (y compris, de façon non limitative, la perte de données, de chance ou de profits) subis en raison de l'accès au Site, de sa navigation ou de l'exploitation des informations qu'il contient&nbsp;;</li>
+          <li>des dommages résultant d'une intrusion frauduleuse d'un tiers ayant entraîné une modification des informations diffusées sur le Site.</li>
+        </ul>
+        <p>Il est rappelé que le secret des correspondances n'est pas garanti sur Internet et qu'il appartient à chaque Visiteur de prendre les mesures appropriées pour protéger ses propres données et équipements.</p>
+      </section>
+
+      <section id="liens">
+        <h2><span class="num">6</span>Liens hypertextes</h2>
+        <p>Le Site peut contenir des liens hypertextes vers des sites tiers. Ces liens sont fournis pour la seule convenance du Visiteur. L'Éditeur n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu, leur disponibilité ou leurs pratiques en matière de données personnelles.</p>
+        <p>La mise en place d'un lien hypertexte vers le Site est libre, sous réserve qu'elle ne porte pas atteinte aux intérêts ou à l'image de l'Éditeur et qu'elle ne crée aucune confusion sur l'origine des contenus.</p>
+      </section>
+
+      <p class="part">Partie III — Données personnelles &amp; cookies</p>
+
+      <section id="donnees">
+        <h2><span class="num">7</span>Protection des données personnelles</h2>
+        <p>Le traitement des données à caractère personnel est régi par le Règlement (UE) 2016/679 du 27&nbsp;avril 2016 («&nbsp;RGPD&nbsp;») et par la loi n°&nbsp;78-17 du 6&nbsp;janvier 1978 modifiée («&nbsp;Informatique et Libertés&nbsp;»).</p>
+
+        <h3>7.1 Responsable de traitement</h3>
+        <p>Le responsable de traitement est l'Éditeur, dont les coordonnées figurent à l'article&nbsp;1.</p>
+
+        <h3>7.2 Données collectées</h3>
+        <p>Le Site est un site statique&nbsp;: l'Éditeur ne collecte directement aucune donnée personnelle par l'intermédiaire du Site (absence de formulaire, de compte utilisateur ou d'outil de mesure d'audience mis en place par l'Éditeur).</p>
+        <p>L'hébergeur GitHub, Inc. peut toutefois collecter, pour des finalités techniques et de sécurité (journaux de connexion), certaines données telles que l'adresse IP du Visiteur. Ce traitement est décrit dans la <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">politique de confidentialité de GitHub</a>.</p>
+
+        <h3>7.3 Transfert hors de l'Union européenne</h3>
+        <p>GitHub, Inc. étant établie aux États-Unis, les données techniques traitées par l'hébergeur peuvent faire l'objet d'un transfert hors de l'Union européenne. Ce transfert est encadré par les garanties prévues au chapitre&nbsp;V du RGPD, notamment la certification de GitHub au cadre de protection des données UE–États-Unis (<em>EU-U.S. Data Privacy Framework</em>) et, à titre subsidiaire, les clauses contractuelles types de la Commission européenne.</p>
+
+        <h3>7.4 Droits du Visiteur</h3>
+        <p>Conformément aux articles 15 à 22 du RGPD, le Visiteur dispose d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité sur les données le concernant. Ces droits peuvent être exercés auprès de l'Éditeur à l'adresse indiquée à l'article&nbsp;1, en justifiant de son identité.</p>
+        <p>Le Visiteur dispose également du droit d'introduire une réclamation auprès de la Commission nationale de l'informatique et des libertés (CNIL)&nbsp;: 3&nbsp;place de Fontenoy, TSA&nbsp;80715, 75334 Paris Cedex&nbsp;07 — <a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>.</p>
+      </section>
+
+      <section id="cookies">
+        <h2><span class="num">8</span>Cookies et traceurs</h2>
+        <p>L'Éditeur ne dépose aucun cookie ni traceur soumis à consentement au sens des lignes directrices et recommandations de la CNIL (délibérations du 17&nbsp;septembre 2020)&nbsp;: pas de cookie publicitaire, de mesure d'audience ou de réseau social.</p>
+        <p>Seuls peuvent être utilisés, le cas échéant, des cookies ou traceurs strictement nécessaires à la fourniture du service (article 82 de la loi Informatique et Libertés), lesquels sont dispensés de consentement.</p>
+        <p>Si des traceurs soumis à consentement venaient à être mis en place, le Visiteur en serait préalablement informé et son consentement serait recueilli au moyen d'un dispositif lui permettant d'accepter ou de refuser avec le même degré de simplicité, et de retirer son choix à tout moment.</p>
+      </section>
+
+      <p class="part">Partie IV — Dispositions finales</p>
+
+      <section id="droit">
+        <h2><span class="num">9</span>Droit applicable</h2>
+        <p>Le Site et les présentes conditions générales d'utilisation sont régis par le droit français. Le Visiteur accédant au Site depuis l'étranger doit s'assurer du respect des lois qui lui sont localement applicables.</p>
+        <p>En consultant ou en utilisant le Site, le Visiteur reconnaît avoir pris connaissance des présentes conditions et s'engage à les respecter.</p>
+      </section>
+
+      <section id="modif">
+        <h2><span class="num">10</span>Modification des présentes</h2>
+        <p>L'Éditeur se réserve le droit de modifier à tout moment la présente page. La version applicable est celle en ligne à la date de consultation&nbsp;; la date de dernière mise à jour figure en tête du document.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="doc-footer">
+    <p>© Thibault Langlois-Berthelot — Mentions légales &amp; CGU. Document informatif&nbsp;: ne constitue pas un conseil juridique.</p>
+  </footer>
+
+</body>
+</html>
