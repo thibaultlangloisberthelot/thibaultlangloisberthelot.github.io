@@ -432,6 +432,92 @@
       <!-- Expérience -->
       <article id="experience">
         <h2 class="major">Expérience</h2>
+
+
+
+
+        
+
+<!-- ===== Anciens employeurs ===== -->
+<div class="employer-slider">
+    <div class="employer-track">
+
+        <a href="https://deblock.com" target="_blank" rel="noopener">
+            <img src="images/employeurs/deblock.svg" alt="Deblock">
+        </a>
+
+        <a href="https://www.lb-avocat.fr" target="_blank" rel="noopener">
+            <img src="images/employeurs/lb-avocat.svg" alt="LB Avocat">
+        </a>
+
+        <!-- Duplication pour un défilement infini -->
+        <a href="https://deblock.com" target="_blank" rel="noopener">
+            <img src="images/employeurs/deblock.svg" alt="Deblock">
+        </a>
+
+        <a href="https://www.lb-avocat.fr" target="_blank" rel="noopener">
+            <img src="images/employeurs/lb-avocat.svg" alt="LB Avocat">
+        </a>
+
+    </div>
+</div>
+
+<style>
+.employer-slider{
+    width:100%;
+    overflow:hidden;
+    margin:0 0 1.8rem;
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+            mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+}
+
+.employer-track{
+    display:flex;
+    align-items:center;
+    gap:70px;
+    width:max-content;
+    animation:employer-scroll 18s linear infinite;
+}
+
+.employer-slider:hover .employer-track{
+    animation-play-state:paused;
+}
+
+.employer-track img{
+    height:42px;
+    width:auto;
+    opacity:.55;
+    filter:grayscale(100%);
+    transition:all .25s ease;
+}
+
+.employer-track img:hover{
+    opacity:1;
+    filter:none;
+    transform:scale(1.05);
+}
+
+@keyframes employer-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+}
+
+@media(max-width:736px){
+    .employer-track{
+        gap:40px;
+        animation-duration:12s;
+    }
+
+    .employer-track img{
+        height:32px;
+    }
+}
+</style>
+        
+
+
+
+        
         <span class="image main">
           <a href="https://www.kryptosphere.org" target="_blank" rel="noopener" title="www.kryptosphere.org">
             <img src="images/pic03.gif" alt="KRYPTOSPHERE"/>
