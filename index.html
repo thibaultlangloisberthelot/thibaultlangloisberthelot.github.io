@@ -201,33 +201,69 @@
 
 
 
-<div style="display:flex;justify-content:center;align-items:center;gap:35px;flex-wrap:wrap;margin:0 0 1.5rem 0;">
 
-    <img src="images/diplomes/kedge.png"
-         alt="KEDGE"
-         style="height:42px;opacity:.65;filter:grayscale(100%);transition:.2s;"
-         onmouseover="this.style.opacity=1;this.style.filter='none';"
-         onmouseout="this.style.opacity=.65;this.style.filter='grayscale(100%)';">
 
-    <img src="images/diplomes/paris-x.png"
-         alt="Université Paris Nanterre"
-         style="height:42px;opacity:.65;filter:grayscale(100%);transition:.2s;"
-         onmouseover="this.style.opacity=1;this.style.filter='none';"
-         onmouseout="this.style.opacity=.65;this.style.filter='grayscale(100%)';">
+        
 
-    <img src="images/diplomes/ehess.png"
-         alt="EHESS"
-         style="height:42px;opacity:.65;filter:grayscale(100%);transition:.2s;"
-         onmouseover="this.style.opacity=1;this.style.filter='none';"
-         onmouseout="this.style.opacity=.65;this.style.filter='grayscale(100%)';">
 
-    <img src="images/diplomes/efb.png"
-         alt="EFB"
-         style="height:42px;opacity:.65;filter:grayscale(100%);transition:.2s;"
-         onmouseover="this.style.opacity=1;this.style.filter='none';"
-         onmouseout="this.style.opacity=.65;this.style.filter='grayscale(100%)';">
+<style>
+.logo-slider{
+    overflow:hidden;
+    margin:0 0 1.5rem;
+}
 
+.logo-track{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    gap:55px;
+    animation:scrollLogos 20s linear infinite;
+}
+
+.logo-slider:hover .logo-track{
+    animation-play-state:paused;
+}
+
+.logo-track img{
+    height:42px;
+    width:auto;
+    opacity:.65;
+    filter:grayscale(100%);
+    transition:.25s;
+}
+
+.logo-track img:hover{
+    opacity:1;
+    filter:none;
+    transform:scale(1.05);
+}
+
+@keyframes scrollLogos{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+}
+</style>
+
+<div class="logo-slider">
+    <div class="logo-track">
+
+        <img src="images/diplomes/kedge.png" alt="KEDGE">
+        <img src="images/diplomes/paris-x.png" alt="Université Paris Nanterre">
+        <img src="images/diplomes/ehess.png" alt="EHESS">
+        <img src="images/diplomes/efb.png" alt="EFB">
+
+        <!-- duplication pour boucle infinie -->
+        <img src="images/diplomes/kedge.png" alt="">
+        <img src="images/diplomes/paris-x.png" alt="">
+        <img src="images/diplomes/ehess.png" alt="">
+        <img src="images/diplomes/efb.png" alt="">
+
+    </div>
 </div>
+
+
+
+        
 
 
         
