@@ -1,6 +1,4 @@
 User-agent: *
-Disallow:
-
-Sitemap: http://www.thibaultlangloisberthelot.github.io/sitemap.xml
+Allow: /
  
-
+Sitemap: https://thibaultlangloisberthelot.github.io/sitemap.xml
