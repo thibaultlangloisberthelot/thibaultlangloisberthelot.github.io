@@ -379,18 +379,34 @@
 <script>
   (() => {
     const query = `
-      SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount)
-      WHERE {
-        {
-          ?citingWork wdt:P2860 wd:Q140363517 .
-        }
+      SELECT ?rang ?titre WHERE {
+  {
+    { SELECT (COUNT(DISTINCT ?cw) AS ?n) WHERE {
+        { ?cw wdt:P2860 wd:Q140363517 . }
         UNION
-        {
-          SERVICE wdsubgraph:scholarly_articles {
-            ?citingWork wdt:P2860 wd:Q140363517 .
-          }
+        { SERVICE wdsubgraph:scholarly_articles { ?cw wdt:P2860 wd:Q140363517 . } }
+    } }
+    BIND(0 AS ?rang)
+    BIND(CONCAT("TOTAL : ", STR(?n), " citations") AS ?titre)
+  }
+  UNION
+  {
+    SELECT DISTINCT (1 AS ?rang) ?titre WHERE {
+      {
+        ?citingWork wdt:P2860 wd:Q140363517 ;
+                    wdt:P1476 ?titre .
+      }
+      UNION
+      {
+        SERVICE wdsubgraph:scholarly_articles {
+          ?citingWork wdt:P2860 wd:Q140363517 ;
+                      wdt:P1476 ?titre .
         }
       }
+    }
+  }
+}
+ORDER BY ?rang ?titre
     `;
 
     const endpoint = "https://query.wikidata.org/sparql";
