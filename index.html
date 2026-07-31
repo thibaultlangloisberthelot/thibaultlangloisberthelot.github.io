@@ -296,16 +296,13 @@
         </p>
 
         
-<!-- ===== Compteur + liste des citations ===== -->
+<!-- ===== Compteur de citations ===== -->
 <style>
-#thesis-citations-widget{display:flex;justify-content:center;margin:1.5rem 0 .75rem}
+#thesis-citations-widget{display:flex;justify-content:center;margin:1.5rem 0}
 #thesis-citations-link{display:inline-flex;align-items:center;gap:.9rem;padding:.75rem 1.15rem;color:inherit;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.35);border-radius:12px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.12);transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
 #thesis-citations-link:hover{transform:translateY(-2px);background:rgba(255,255,255,.12);box-shadow:0 9px 24px rgba(0,0,0,.18)}
 #thesis-citations-count{min-width:1.2ch;font-size:2rem;font-weight:700;line-height:1;text-align:center}
 #thesis-citations-label{font-size:.9rem;font-weight:600;letter-spacing:.02em}
-#thesis-citations-list{margin:0 0 1.5rem;padding:0;list-style:none;font-size:.85rem;line-height:1.5;opacity:.85}
-#thesis-citations-list li{margin:0 0 .55rem;padding:0 0 0 1rem;text-indent:-1rem}
-#thesis-citations-list li::before{content:"—";margin-right:.5rem;opacity:.5}
 </style>
 
 <div id="thesis-citations-widget">
@@ -315,35 +312,47 @@
 </a>
 </div>
 
-<ul id="thesis-citations-list"></ul>
-
 <script>
 (function(){
 var E="https://query.wikidata.org/sparql";
-var Q="SELECT ?rang ?titre ?n WHERE { { { SELECT (COUNT(DISTINCT ?cw) AS ?n) WHERE { { ?cw wdt:P2860 wd:Q140363517 . } UNION { SERVICE wdsubgraph:scholarly_articles { ?cw wdt:P2860 wd:Q140363517 . } } } } BIND(0 AS ?rang) BIND(CONCAT(\"TOTAL\") AS ?titre) } UNION { SELECT DISTINCT (1 AS ?rang) ?titre WHERE { { ?citingWork wdt:P2860 wd:Q140363517 ; wdt:P1476 ?titre . } UNION { SERVICE wdsubgraph:scholarly_articles { ?citingWork wdt:P2860 wd:Q140363517 ; wdt:P1476 ?titre . } } } } } ORDER BY ?rang ?titre";
+var QCOUNT="SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount) WHERE { { ?citingWork wdt:P2860 wd:Q140363517 . } UNION { SERVICE wdsubgraph:scholarly_articles { ?citingWork wdt:P2860 wd:Q140363517 . } } }";
+var QLINK=[
+'SELECT ?TOTAL ?titre WHERE {',
+'  {',
+'    { SELECT (COUNT(DISTINCT ?cw) AS ?n) WHERE {',
+'        { ?cw wdt:P2860 wd:Q140363517 . }',
+'        UNION',
+'        { SERVICE wdsubgraph:scholarly_articles { ?cw wdt:P2860 wd:Q140363517 . } }',
+'    } }',
+'    BIND(0 AS ?rang)',
+'    BIND(CONCAT(">>>  ", STR(?n), " CITATIONS AU TOTAL  <<<") AS ?TOTAL)',
+'    BIND("" AS ?titre)',
+'  }',
+'  UNION',
+'  {',
+'    SELECT DISTINCT (1 AS ?rang) ("" AS ?TOTAL) ?titre WHERE {',
+'      { ?citingWork wdt:P2860 wd:Q140363517 ; wdt:P1476 ?titre . }',
+'      UNION',
+'      { SERVICE wdsubgraph:scholarly_articles { ?citingWork wdt:P2860 wd:Q140363517 ; wdt:P1476 ?titre . } }',
+'    }',
+'  }',
+'}',
+'ORDER BY ?rang ?titre'
+].join('\n');
 var c=document.getElementById("thesis-citations-count");
 var l=document.getElementById("thesis-citations-label");
 var a=document.getElementById("thesis-citations-link");
-var u=document.getElementById("thesis-citations-list");
-if(!c||!l||!a||!u){return;}
-a.href="https://query.wikidata.org/#"+encodeURIComponent(Q);
-fetch(E+"?query="+encodeURIComponent(Q)+"&format=json",{headers:{Accept:"application/sparql-results+json"}})
+if(!c||!l||!a){return;}
+a.href="https://query.wikidata.org/#"+encodeURIComponent(QLINK);
+fetch(E+"?query="+encodeURIComponent(QCOUNT)+"&format=json",{headers:{Accept:"application/sparql-results+json"}})
 .then(function(r){if(!r.ok){throw new Error("Wikidata "+r.status);}return r.json();})
 .then(function(d){
-var rows=(d&&d.results&&d.results.bindings)||[];
-var total=0,frag=document.createDocumentFragment();
-for(var i=0;i<rows.length;i++){
-var row=rows[i];
-if(row.n&&row.n.value){total=Number(row.n.value)||0;continue;}
-if(!row.titre||!row.titre.value){continue;}
-var li=document.createElement("li");
-li.textContent=row.titre.value;
-frag.appendChild(li);
-}
-c.textContent=new Intl.NumberFormat("fr-FR").format(total);
-l.textContent=total===1?"Citation recensée":"Citations recensées";
-a.setAttribute("aria-label",total+(total===1?" citation recensée":" citations recensées"));
-u.appendChild(frag);
+var b=d&&d.results&&d.results.bindings;
+var v=b&&b[0]&&b[0].citationCount?b[0].citationCount.value:"0";
+var n=Number(v)||0;
+c.textContent=new Intl.NumberFormat("fr-FR").format(n);
+l.textContent=n===1?"Citation recensée":"Citations recensées";
+a.setAttribute("aria-label",n+(n===1?" citation recensée":" citations recensées"));
 })
 .catch(function(e){
 console.error("Compteur:",e);
@@ -352,7 +361,7 @@ l.textContent="Citations indisponibles";
 });
 })();
 </script>
-<!-- ===== Fin compteur + liste ===== -->
+<!-- ===== Fin compteur ===== -->
 
         
         
