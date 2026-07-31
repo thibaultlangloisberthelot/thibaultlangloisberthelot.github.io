@@ -43,55 +43,76 @@
   </script>
 
   <!-- JSON-LD / SCHEMA.ORG (site personnel -> entité Person reliée au cabinet) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://thibaultlangloisberthelot.github.io/#website",
-      "url": "https://thibaultlangloisberthelot.github.io/",
-      "name": "Thibault Langlois-Berthelot",
-      "inLanguage": "fr-FR"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://thibaultlangloisberthelot.github.io/#webpage",
-      "url": "https://thibaultlangloisberthelot.github.io/",
-      "name": "Thibault Langlois-Berthelot - Docteur en droit",
-      "isPartOf": { "@id": "https://thibaultlangloisberthelot.github.io/#website" },
-      "about": { "@id": "https://thibaultlangloisberthelot.github.io/#person" },
-      "inLanguage": "fr-FR"
-    },
-    {
-      "@type": "Person",
-      "@id": "https://thibaultlangloisberthelot.github.io/#person",
-      "name": "Thibault Langlois-Berthelot",
-      "jobTitle": ["Avocat", "Docteur en droit"],
-      "url": "https://thibaultlangloisberthelot.github.io/",
-      "sameAs": [
-        "https://www.linkedin.com/in/kryptosphere/",
-        "https://twitter.com/docteurbtc",
-        "https://www.instagram.com/docteurbtc"
-      ],
-      "worksFor": {
-        "@id": ""
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://thibaultlangloisberthelot.github.io/#website",
+        "url": "https://thibaultlangloisberthelot.github.io/",
+        "name": "Thibault Langlois-Berthelot",
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": "https://thibaultlangloisberthelot.github.io/#person" }
       },
-      "affiliation": {
-        "@id": ""
+      {
+        "@type": "ProfilePage",
+        "@id": "https://thibaultlangloisberthelot.github.io/#webpage",
+        "url": "https://thibaultlangloisberthelot.github.io/",
+        "name": "Thibault Langlois-Berthelot — Docteur en droit",
+        "isPartOf": { "@id": "https://thibaultlangloisberthelot.github.io/#website" },
+        "about": { "@id": "https://thibaultlangloisberthelot.github.io/#person" },
+        "mainEntity": { "@id": "https://thibaultlangloisberthelot.github.io/#person" },
+        "inLanguage": "fr-FR"
       },
-      "knowsAbout": [
-        "crypto-actifs",
-        "blockchain",
-        "crypto",
-        "droit du numérique",
-        "RGPD",
-        "intelligence artificielle"
-      ]
-    }
-  ]
-}
-</script>
+      {
+        "@type": "Person",
+        "@id": "https://thibaultlangloisberthelot.github.io/#person",
+        "name": "Thibault Langlois-Berthelot",
+        "givenName": "Thibault",
+        "familyName": "Langlois-Berthelot",
+        "jobTitle": ["Docteur en droit", "Juriste"],
+        "description": "Docteur en droit, avocat de formation. Travaux sur les crypto-actifs, la blockchain et l'identité numérique décentralisée.",
+        "url": "https://thibaultlangloisberthelot.github.io/",
+        "image": "https://thibaultlangloisberthelot.github.io/images/pic02.jpg",
+        "nationality": "FR",
+        "knowsLanguage": ["fr", "en"],
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "KEDGE Business School", "url": "https://kedge.edu/" },
+          { "@type": "CollegeOrUniversity", "name": "Université Paris Nanterre", "url": "https://www.parisnanterre.fr/" },
+          { "@type": "CollegeOrUniversity", "name": "École des hautes études en sciences sociales (EHESS)", "url": "https://www.ehess.fr/" },
+          { "@type": "EducationalOrganization", "name": "École de formation professionnelle des barreaux du ressort de la cour d'appel de Paris (EFB)", "url": "https://www.efb.fr/" }
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/kryptosphere/",
+          "https://x.com/docteurbtc",
+          "https://www.instagram.com/docteurbtc",
+          "https://thibaultlangloisberthelot.medium.com/",
+          "https://hal.science/tel-04190658"
+        ],
+        "knowsAbout": [
+          "crypto-actifs",
+          "blockchain",
+          "droit du numérique",
+          "RGPD",
+          "conformité",
+          "LCB-FT",
+          "intelligence artificielle"
+        ]
+      },
+      {
+        "@type": "Thesis",
+        "@id": "https://thibaultlangloisberthelot.github.io/#these",
+        "name": "La blockchain au regard du droit et de l'identité",
+        "author": { "@id": "https://thibaultlangloisberthelot.github.io/#person" },
+        "inSupportOf": "Doctorat en droit",
+        "datePublished": "2023",
+        "url": "https://hal.science/tel-04190658",
+        "inLanguage": "fr-FR"
+      }
+    ]
+  }
+  </script>
   <style>
   /* Icônes de réseaux sociaux */
   ul.icons.social-icons {
