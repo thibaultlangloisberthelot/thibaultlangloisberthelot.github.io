@@ -294,122 +294,90 @@
           <a href="https://hal.science/tel-04190658" target="_blank" rel="noopener" title="La blockchain au regard du droit et de l'identité">thèse de doctorat</a>
           porte sur les évolutions règlementaires et informatiques des crypto-actifs, des technologies blockchains et de l'identité numérique décentralisée :
         </p>
-<!-- Compteur perso de citations (thèse doctorat) -->
 
-<div
-  id="thesis-citations-widget"
-  style="display: flex; justify-content: center; margin: 1.5rem 0;"
->
+        
+<!-- ===== Compteur de citations (thèse de doctorat) ===== -->
+<div id="thesis-citations-widget" style="display:flex;justify-content:center;margin:1.5rem 0;">
   
     id="thesis-citations-link"
-    href="https://query.wikidata.org/#"
+    href="https://query.wikidata.org/"
     target="_blank"
     rel="noopener noreferrer"
     title="« La blockchain au regard du droit et de l'identité »"
-    style="
-      display: inline-flex;
-      align-items: center;
-      gap: 0.9rem;
-      padding: 0.75rem 1.15rem;
-      color: inherit;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    "
-    onmouseover="
-      this.style.transform='translateY(-2px)';
-      this.style.background='rgba(255,255,255,0.12)';
-      this.style.boxShadow='0 9px 24px rgba(0,0,0,0.18)';
-    "
-    onmouseout="
-      this.style.transform='translateY(0)';
-      this.style.background='rgba(255,255,255,0.06)';
-      this.style.boxShadow='0 6px 18px rgba(0,0,0,0.12)';
-    "
+    style="display:inline-flex;align-items:center;gap:0.9rem;padding:0.75rem 1.15rem;color:inherit;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.35);border-radius:12px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,0.12);transition:transform 0.2s ease,background 0.2s ease,box-shadow 0.2s ease;"
+    onmouseover="this.style.transform='translateY(-2px)';this.style.background='rgba(255,255,255,0.12)';this.style.boxShadow='0 9px 24px rgba(0,0,0,0.18)';"
+    onmouseout="this.style.transform='translateY(0)';this.style.background='rgba(255,255,255,0.06)';this.style.boxShadow='0 6px 18px rgba(0,0,0,0.12)';"
   >
-    <span
-      id="thesis-citations-count"
-      aria-live="polite"
-      style="min-width: 1.2ch; font-size: 2rem; font-weight: 700; line-height: 1; text-align: center;"
-    >—</span>
-
-    <span
-      id="thesis-citations-label"
-      style="font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em;"
-    >Citations recensées</span>
+    <span id="thesis-citations-count" aria-live="polite" style="min-width:1.2ch;font-size:2rem;font-weight:700;line-height:1;text-align:center;">—</span>
+    <span id="thesis-citations-label" style="font-size:0.9rem;font-weight:600;letter-spacing:0.02em;">Citations recensées</span>
   </a>
 </div>
 
 <script>
-  (() => {
-    const query = `
-SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount)
-WHERE {
-  {
-    ?citingWork wdt:P2860 wd:Q140363517 .
-  }
-  UNION
-  {
-    SERVICE wdsubgraph:scholarly_articles {
-      ?citingWork wdt:P2860 wd:Q140363517 .
-    }
-  }
-}
-    `;
+  (function () {
+    var ENDPOINT = "https://query.wikidata.org/sparql";
 
-    const endpoint = "https://query.wikidata.org/sparql";
+    var queryFull = [
+      "SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount)",
+      "WHERE {",
+      "  {",
+      "    ?citingWork wdt:P2860 wd:Q140363517 .",
+      "  }",
+      "  UNION",
+      "  {",
+      "    SERVICE wdsubgraph:scholarly_articles {",
+      "      ?citingWork wdt:P2860 wd:Q140363517 .",
+      "    }",
+      "  }",
+      "}"
+    ].join("\n");
 
-    const requestUrl =
-      endpoint + "?query=" + encodeURIComponent(query) + "&format=json";
+    var queryFallback = [
+      "SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount)",
+      "WHERE {",
+      "  ?citingWork wdt:P2860 wd:Q140363517 .",
+      "}"
+    ].join("\n");
 
-    const countElement = document.getElementById("thesis-citations-count");
-    const labelElement = document.getElementById("thesis-citations-label");
-    const linkElement = document.getElementById("thesis-citations-link");
+    var countElement = document.getElementById("thesis-citations-count");
+    var labelElement = document.getElementById("thesis-citations-label");
+    var linkElement = document.getElementById("thesis-citations-link");
 
     if (!countElement || !labelElement || !linkElement) return;
 
-    linkElement.href =
-      "https://query.wikidata.org/#" + encodeURIComponent(query);
+    linkElement.href = "https://query.wikidata.org/#" + encodeURIComponent(queryFull);
 
-    fetch(requestUrl, {
-      headers: { Accept: "application/sparql-results+json" }
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Erreur Wikidata : " + response.status);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const value = data?.results?.bindings?.[0]?.citationCount?.value;
-        const citationCount = Number(value || 0);
+    function run(sparql) {
+      var url = ENDPOINT + "?query=" + encodeURIComponent(sparql) + "&format=json";
+      return fetch(url, { headers: { Accept: "application/sparql-results+json" } })
+        .then(function (r) {
+          if (!r.ok) throw new Error("Wikidata " + r.status);
+          return r.json();
+        });
+    }
 
-        countElement.textContent =
-          new Intl.NumberFormat("fr-FR").format(citationCount);
+    function display(data) {
+      var b = data && data.results && data.results.bindings;
+      var raw = b && b[0] && b[0].citationCount ? b[0].citationCount.value : "0";
+      var total = Number(raw) || 0;
 
-        labelElement.textContent =
-          citationCount === 1 ? "Citation recensée" : "Citations recensées";
+      countElement.textContent = new Intl.NumberFormat("fr-FR").format(total);
+      labelElement.textContent = total === 1 ? "Citation recensée" : "Citations recensées";
+      linkElement.setAttribute("aria-label", total + (total === 1 ? " citation recensée" : " citations recensées"));
+    }
 
-        linkElement.setAttribute(
-          "aria-label",
-          citationCount +
-            " " +
-            (citationCount === 1 ? "citation recensée" : "citations recensées")
-        );
-      })
-      .catch((error) => {
-        console.error(error);
+    run(queryFull)
+      .then(display)
+      .catch(function () { return run(queryFallback).then(display); })
+      .catch(function (e) {
+        console.error("Compteur de citations :", e);
         countElement.textContent = "—";
         labelElement.textContent = "Citations indisponibles";
       });
   })();
 </script>
-
-
-
+<!-- ===== Fin du compteur de citations ===== -->
+        
         <p>
           Vous pouvez aussi retrouver certains passages de cette thèse et de mes interventions dans ces
           <a href="https://www.instagram.com/docteurbtc" target="_blank" rel="noopener" title="Citation de ma thèse dans Le Figaro">médias</a>.
