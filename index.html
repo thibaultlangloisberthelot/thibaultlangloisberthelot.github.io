@@ -296,87 +296,53 @@
         </p>
 
         
-<!-- ===== Compteur de citations (thèse de doctorat) ===== -->
-<div id="thesis-citations-widget" style="display:flex;justify-content:center;margin:1.5rem 0;">
-  
-    id="thesis-citations-link"
-    href="https://query.wikidata.org/"
-    target="_blank"
-    rel="noopener noreferrer"
-    title="« La blockchain au regard du droit et de l'identité »"
-    style="display:inline-flex;align-items:center;gap:0.9rem;padding:0.75rem 1.15rem;color:inherit;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.35);border-radius:12px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,0.12);transition:transform 0.2s ease,background 0.2s ease,box-shadow 0.2s ease;"
-    onmouseover="this.style.transform='translateY(-2px)';this.style.background='rgba(255,255,255,0.12)';this.style.boxShadow='0 9px 24px rgba(0,0,0,0.18)';"
-    onmouseout="this.style.transform='translateY(0)';this.style.background='rgba(255,255,255,0.06)';this.style.boxShadow='0 6px 18px rgba(0,0,0,0.12)';"
-  >
-    <span id="thesis-citations-count" aria-live="polite" style="min-width:1.2ch;font-size:2rem;font-weight:700;line-height:1;text-align:center;">—</span>
-    <span id="thesis-citations-label" style="font-size:0.9rem;font-weight:600;letter-spacing:0.02em;">Citations recensées</span>
-  </a>
+<!-- ===== Compteur de citations ===== -->
+<style>
+#thesis-citations-widget{display:flex;justify-content:center;margin:1.5rem 0}
+#thesis-citations-link{display:inline-flex;align-items:center;gap:.9rem;padding:.75rem 1.15rem;color:inherit;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.35);border-radius:12px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.12);transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+#thesis-citations-link:hover{transform:translateY(-2px);background:rgba(255,255,255,.12);box-shadow:0 9px 24px rgba(0,0,0,.18)}
+#thesis-citations-count{min-width:1.2ch;font-size:2rem;font-weight:700;line-height:1;text-align:center}
+#thesis-citations-label{font-size:.9rem;font-weight:600;letter-spacing:.02em}
+</style>
+
+<div id="thesis-citations-widget">
+<a id="thesis-citations-link" href="https://query.wikidata.org/" target="_blank" rel="noopener noreferrer" title="La blockchain au regard du droit et de l'identite">
+<span id="thesis-citations-count" aria-live="polite">—</span>
+<span id="thesis-citations-label">Citations recensées</span>
+</a>
 </div>
 
 <script>
-  (function () {
-    var ENDPOINT = "https://query.wikidata.org/sparql";
-
-    var queryFull = [
-      "SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount)",
-      "WHERE {",
-      "  {",
-      "    ?citingWork wdt:P2860 wd:Q140363517 .",
-      "  }",
-      "  UNION",
-      "  {",
-      "    SERVICE wdsubgraph:scholarly_articles {",
-      "      ?citingWork wdt:P2860 wd:Q140363517 .",
-      "    }",
-      "  }",
-      "}"
-    ].join("\n");
-
-    var queryFallback = [
-      "SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount)",
-      "WHERE {",
-      "  ?citingWork wdt:P2860 wd:Q140363517 .",
-      "}"
-    ].join("\n");
-
-    var countElement = document.getElementById("thesis-citations-count");
-    var labelElement = document.getElementById("thesis-citations-label");
-    var linkElement = document.getElementById("thesis-citations-link");
-
-    if (!countElement || !labelElement || !linkElement) return;
-
-    linkElement.href = "https://query.wikidata.org/#" + encodeURIComponent(queryFull);
-
-    function run(sparql) {
-      var url = ENDPOINT + "?query=" + encodeURIComponent(sparql) + "&format=json";
-      return fetch(url, { headers: { Accept: "application/sparql-results+json" } })
-        .then(function (r) {
-          if (!r.ok) throw new Error("Wikidata " + r.status);
-          return r.json();
-        });
-    }
-
-    function display(data) {
-      var b = data && data.results && data.results.bindings;
-      var raw = b && b[0] && b[0].citationCount ? b[0].citationCount.value : "0";
-      var total = Number(raw) || 0;
-
-      countElement.textContent = new Intl.NumberFormat("fr-FR").format(total);
-      labelElement.textContent = total === 1 ? "Citation recensée" : "Citations recensées";
-      linkElement.setAttribute("aria-label", total + (total === 1 ? " citation recensée" : " citations recensées"));
-    }
-
-    run(queryFull)
-      .then(display)
-      .catch(function () { return run(queryFallback).then(display); })
-      .catch(function (e) {
-        console.error("Compteur de citations :", e);
-        countElement.textContent = "—";
-        labelElement.textContent = "Citations indisponibles";
-      });
-  })();
+(function(){
+var E="https://query.wikidata.org/sparql";
+var Q1="SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount) WHERE { { ?citingWork wdt:P2860 wd:Q140363517 . } UNION { SERVICE wdsubgraph:scholarly_articles { ?citingWork wdt:P2860 wd:Q140363517 . } } }";
+var Q2="SELECT (COUNT(DISTINCT ?citingWork) AS ?citationCount) WHERE { ?citingWork wdt:P2860 wd:Q140363517 . }";
+var c=document.getElementById("thesis-citations-count");
+var l=document.getElementById("thesis-citations-label");
+var a=document.getElementById("thesis-citations-link");
+if(!c||!l||!a){return;}
+a.href="https://query.wikidata.org/#"+encodeURIComponent(Q1);
+function run(q){
+return fetch(E+"?query="+encodeURIComponent(q)+"&format=json",{headers:{Accept:"application/sparql-results+json"}}).then(function(r){if(!r.ok){throw new Error("Wikidata "+r.status);}return r.json();});
+}
+function show(d){
+var b=d&&d.results&&d.results.bindings;
+var v=b&&b[0]&&b[0].citationCount?b[0].citationCount.value:"0";
+var n=Number(v)||0;
+c.textContent=new Intl.NumberFormat("fr-FR").format(n);
+l.textContent=n===1?"Citation recensée":"Citations recensées";
+a.setAttribute("aria-label",n+(n===1?" citation recensée":" citations recensées"));
+}
+run(Q1).then(show).catch(function(){return run(Q2).then(show);}).catch(function(e){
+console.error("Compteur:",e);
+c.textContent="—";
+l.textContent="Citations indisponibles";
+});
+})();
 </script>
-<!-- ===== Fin du compteur de citations ===== -->
+<!-- ===== Fin compteur ===== -->
+
+        
         
         <p>
           Vous pouvez aussi retrouver certains passages de cette thèse et de mes interventions dans ces
