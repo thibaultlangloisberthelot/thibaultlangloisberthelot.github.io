@@ -647,7 +647,7 @@ input, select, textarea {
 
 		.image:before {
 			pointer-events: none;
-			background-image: url("https://thibaultlangloisberthelot.medium.com/?source=user_profile-------------------------------------");
+			background-image: url("https://thibaultlangloisberthelot.github.io/images/overlay.gif");
 			background-color: rgba(19, 21, 25, 0.5);
 			border-radius: 4px;
 			content: '';
