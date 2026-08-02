@@ -82,101 +82,155 @@
   
   <!-- JSON-LD / SCHEMA.ORG (site personnel -> entité Person reliée au cabinet) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://thibaultlangloisberthelot.com/#website",
-        "url": "https://thibaultlangloisberthelot.com/",
-        "name": "Thibault Langlois-Berthelot",
-        "inLanguage": "fr-FR",
-        "publisher": { "@id": "https://thibaultlangloisberthelot.com/#person" }
-      },
-      {
-        "@type": "ProfilePage",
-        "@id": "https://thibaultlangloisberthelot.com/#webpage",
-        "url": "https://thibaultlangloisberthelot.com/",
-        "name": "Thibault Langlois-Berthelot — Docteur en droit, Avocat",
-        "alternateName": [
-        "DocteurBTC",
-        "@docteurbtc"
-        ],
-        "isPartOf": { "@id": "https://thibaultlangloisberthelot.com/#website" },
-        "about": { "@id": "https://thibaultlangloisberthelot.com/#person" },
-        "mainEntity": { "@id": "https://thibaultlangloisberthelot.com/#person" },
-        "inLanguage": "fr-FR"
-      },
-      {
-        "@type": "Person",
-        "@id": "https://thibaultlangloisberthelot.com/#person",
-        "name": "Thibault Langlois-Berthelot",
-        "givenName": "Thibault",
-        "familyName": "Langlois-Berthelot",
-        "jobTitle": ["Docteur en droit", "Juriste"],
-        "description": "Docteur en droit et juriste. Travaux sur les crypto-actifs, la blockchain et l'identité numérique décentralisée.",
-        "url": "https://thibaultlangloisberthelot.com/",
-        "image": "https://thibaultlangloisberthelot.com/images/pic02.jpg",
-        "nationality": { "@type": "Country", "name": "France" },
-        "knowsLanguage": ["fr", "en"],
-        "alumniOf": [
-          { "@type": "CollegeOrUniversity", "name": "KEDGE Business School", "url": "https://kedge.edu/" },
-          { "@type": "CollegeOrUniversity", "name": "Université Paris Nanterre", "url": "https://www.parisnanterre.fr/" },
-          { "@type": "CollegeOrUniversity", "name": "École des hautes études en sciences sociales (EHESS)", "url": "https://www.ehess.fr/" },
-          { "@type": "EducationalOrganization", "name": "École de formation professionnelle des barreaux du ressort de la cour d'appel de Paris (EFB)", "url": "https://www.efb.fr/" }
-        ],
-        "sameAs": [
-          "https://www.google.com/search?kgmid=/g/11whb28tpf",
-          "https://www.wikidata.org/wiki/Q124511358",
-          "https://wikitia.com/wiki/Thibault_Langlois-Berthelot",
-          "https://www.linkedin.com/in/thibaultlangloisberthelot/",
-          "https://x.com/docteurbtc",
-          "https://www.instagram.com/docteurbtc",
-          "https://theses.fr/260504483",
-          "https://orcid.org/0000-0003-1690-0559",
-          "https://cv.hal.science/thibault-langlois-berthelot"
-        ],
-        "identifier": [
-        { "@type": "PropertyValue", "propertyID": "ORCID", "value": "0000-0003-1690-0559", "url": "https://orcid.org/0000-0003-1690-0559" },
-        { "@type": "PropertyValue", "propertyID": "IdRef", "value": "260504483", "url": "https://www.idref.fr/260504483" }
-        ],
-        "disambiguatingDescription": "Docteur en droit (2023), juriste spécialiste des crypto-actifs — à ne pas confondre avec Maxence ou Jean Langlois-Berthelot.",
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "Juriste en conformité",
-          "occupationLocation": { "@type": "City", "name": "Paris", "sameAs": "https://www.wikidata.org/wiki/Q90" },
-          "skills": "LCB-FT, MiCA, RGPD, crypto-actifs, conformité des prestataires de services sur actifs numériques"
+ {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://thibaultlangloisberthelot.com/#website",
+      "url": "https://thibaultlangloisberthelot.com/",
+      "name": "Thibault Langlois-Berthelot",
+      "alternateName": "Docteur BTC",
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": "https://thibaultlangloisberthelot.com/#person" },
+      "copyrightHolder": { "@id": "https://thibaultlangloisberthelot.com/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://thibaultlangloisberthelot.com/#webpage",
+      "url": "https://thibaultlangloisberthelot.com/",
+      "name": "Thibault Langlois-Berthelot — Docteur en droit, crypto-actifs",
+      "alternateName": ["DocteurBTC", "@docteurbtc"],
+      "isPartOf": { "@id": "https://thibaultlangloisberthelot.com/#website" },
+      "about": { "@id": "https://thibaultlangloisberthelot.com/#person" },
+      "mainEntity": { "@id": "https://thibaultlangloisberthelot.com/#person" },
+      "primaryImageOfPage": { "@id": "https://thibaultlangloisberthelot.com/#portrait" },
+      "inLanguage": "fr-FR",
+      "datePublished": "2016-01-01",
+      "dateModified": "2026-08-02"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://thibaultlangloisberthelot.com/#portrait",
+      "url": "https://thibaultlangloisberthelot.com/images/pic02.jpg",
+      "contentUrl": "https://thibaultlangloisberthelot.com/images/pic02.jpg",
+      "caption": "Thibault Langlois-Berthelot, docteur en droit"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://thibaultlangloisberthelot.com/#person",
+      "name": "Thibault Langlois-Berthelot",
+      "givenName": "Thibault",
+      "familyName": "Langlois-Berthelot",
+      "alternateName": "Docteur BTC",
+      "jobTitle": ["Docteur en droit", "Juriste en conformité"],
+      "description": "Docteur en droit (EHESS, 2023) et juriste en conformité. Travaux de recherche sur les crypto-actifs, la blockchain et l'identité numérique décentralisée. Fondateur du réseau KRYPTOSPHERE® (2017-2026).",
+      "disambiguatingDescription": "Docteur en droit de l'EHESS (2023), juriste spécialiste des crypto-actifs à Paris — à ne pas confondre avec Thibault Langlois (conseiller en gestion de patrimoine à Nantes), ni avec Maxence ou Jean Langlois-Berthelot.",
+      "url": "https://thibaultlangloisberthelot.com/",
+      "mainEntityOfPage": { "@id": "https://thibaultlangloisberthelot.com/#webpage" },
+      "image": { "@id": "https://thibaultlangloisberthelot.com/#portrait" },
+      "nationality": { "@type": "Country", "name": "France" },
+      "knowsLanguage": [
+        { "@type": "Language", "name": "français", "alternateName": "fr" },
+        { "@type": "Language", "name": "anglais", "alternateName": "en" }
+      ],
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "KEDGE Business School", "url": "https://kedge.edu/" },
+        { "@type": "CollegeOrUniversity", "name": "Université Paris Nanterre", "url": "https://www.parisnanterre.fr/" },
+        { "@type": "CollegeOrUniversity", "name": "École des hautes études en sciences sociales", "alternateName": "EHESS", "url": "https://www.ehess.fr/" },
+        { "@type": "EducationalOrganization", "name": "École de formation professionnelle des barreaux du ressort de la cour d'appel de Paris", "alternateName": "EFB", "url": "https://www.efb.fr/" }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "educationalLevel": "Doctorat",
+          "name": "Doctorat en droit",
+          "dateCreated": "2023-06-15",
+          "recognizedBy": { "@type": "CollegeOrUniversity", "name": "École des hautes études en sciences sociales" }
         },
-        "workLocation": { "@type": "City", "name": "Paris" },
-        "hasOccupation": {
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "certificate",
+          "name": "Certificat d'aptitude à la profession d'avocat (CAPA)",
+          "recognizedBy": { "@type": "EducationalOrganization", "name": "École de formation professionnelle des barreaux du ressort de la cour d'appel de Paris" }
+        }
+      ],
+      "hasOccupation": {
         "@type": "Occupation",
         "name": "Juriste en conformité",
         "occupationLocation": { "@type": "City", "name": "Paris", "sameAs": "https://www.wikidata.org/wiki/Q90" },
-        "skills": "LCB-FT, MiCA, crypto-actifs"
+        "skills": "LCB-FT, MiCA, RGPD, crypto-actifs, conformité des prestataires de services sur actifs numériques"
       },
-        "workLocation": { "@type": "City", "name": "Paris" }
-        "knowsAbout": [
-          "bitcoin",
-          "crypto-actifs",
-          "blockchain",
-          "RGPD",
-          "conformité",
-          "LCB-FT",
-          "intelligence artificielle",
-        ]
-      },
-      {
-        "@type": "Thesis",
-        "@id": "https://thibaultlangloisberthelot.com/#these",
-        "name": "La blockchain au regard du droit et de l'identité",
-        "author": { "@id": "https://thibaultlangloisberthelot.com/#person" },
-        "inSupportOf": "Doctorat en droit",
-        "datePublished": "2023-06-15",
-        "url": "https://hal.science/tel-04190658",
-        "inLanguage": "fr-FR"
-      }
-    ]
-  }
+      "workLocation": { "@type": "City", "name": "Paris" },
+      "founder": { "@id": "https://thibaultlangloisberthelot.com/#kryptosphere" },
+      "subjectOf": { "@id": "https://thibaultlangloisberthelot.com/#these" },
+      "identifier": [
+        { "@type": "PropertyValue", "propertyID": "ORCID", "value": "0000-0003-1690-0559", "url": "https://orcid.org/0000-0003-1690-0559" },
+        { "@type": "PropertyValue", "propertyID": "IdRef", "value": "260504483", "url": "https://www.idref.fr/260504483" },
+        { "@type": "PropertyValue", "propertyID": "ResearcherID", "value": "JTU-9969-2023" },
+        { "@type": "PropertyValue", "propertyID": "idHAL", "value": "thibault-langlois-berthelot" }
+      ],
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q124511358",
+        "https://www.google.com/search?kgmid=/g/11whb28tpf",
+        "https://orcid.org/0000-0003-1690-0559",
+        "https://cv.hal.science/thibault-langlois-berthelot",
+        "https://theses.fr/260504483",
+        "https://www.idref.fr/260504483",
+        "https://isidore.science/a/langlois_berthelot_thibault",
+        "https://hal.science/tel-04190658",
+        "https://www.babelio.com/auteur/Thibault-Langlois-Berthelot/739320",
+        "https://thibaultlangloisberthelot.medium.com/",
+        "https://wikitia.com/wiki/Thibault_Langlois-Berthelot",
+        "https://www.linkedin.com/in/thibaultlangloisberthelot/",
+        "https://x.com/docteurbtc",
+        "https://www.instagram.com/docteurbtc"
+      ],
+      "knowsAbout": [
+        { "@type": "DefinedTerm", "name": "Bitcoin", "sameAs": "https://www.wikidata.org/wiki/Q131723" },
+        { "@type": "DefinedTerm", "name": "Blockchain", "sameAs": "https://www.wikidata.org/wiki/Q20514253" },
+        { "@type": "DefinedTerm", "name": "Crypto-actifs" },
+        { "@type": "DefinedTerm", "name": "Identité numérique", "sameAs": "https://www.wikidata.org/wiki/Q1207505" },
+        { "@type": "DefinedTerm", "name": "Règlement général sur la protection des données", "alternateName": "RGPD", "sameAs": "https://www.wikidata.org/wiki/Q1194088" },
+        { "@type": "DefinedTerm", "name": "Lutte contre le blanchiment de capitaux et le financement du terrorisme", "alternateName": "LCB-FT" },
+        { "@type": "DefinedTerm", "name": "Règlement MiCA" },
+        { "@type": "DefinedTerm", "name": "Intelligence artificielle", "sameAs": "https://www.wikidata.org/wiki/Q11660" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://thibaultlangloisberthelot.com/#kryptosphere",
+      "name": "KRYPTOSPHERE® FRANCE",
+      "url": "https://www.kryptosphere.org",
+      "foundingDate": "2017",
+      "founder": { "@id": "https://thibaultlangloisberthelot.com/#person" },
+      "description": "Premier réseau étudiant bénévole en Europe dédié aux nouvelles technologies : bitcoin, crypto-actifs, intelligence artificielle et cybersécurité.",
+      "identifier": { "@type": "PropertyValue", "propertyID": "SIREN", "value": "841356231" },
+      "sameAs": ["https://www.pappers.fr/entreprise/kryptosphere-france-841356231"]
+    },
+    {
+      "@type": "Thesis",
+      "@id": "https://thibaultlangloisberthelot.com/#these",
+      "name": "La blockchain au regard du droit et de l'identité",
+      "alternateName": "Blockchain in the context of law and identity",
+      "author": { "@id": "https://thibaultlangloisberthelot.com/#person" },
+      "inSupportOf": "Doctorat en droit",
+      "datePublished": "2023-06-15",
+      "url": "https://hal.science/tel-04190658",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q140363517",
+        "https://zenodo.org/record/8398960"
+      ],
+      "identifier": { "@type": "PropertyValue", "propertyID": "NNT", "value": "2023EHES0073" },
+      "numberOfPages": 473,
+      "inLanguage": "fr-FR",
+      "learningResourceType": "Thèse de doctorat",
+      "publisher": { "@type": "CollegeOrUniversity", "name": "École des hautes études en sciences sociales" },
+      "abstract": "Depuis plus d'une décennie, les technologies blockchains redéfinissent les frontières politiques, juridiques et économiques du contrat social. Cette thèse examine, à travers un prisme interdisciplinaire, l'articulation de ces technologies avec les cadres juridiques et sociaux existants, ainsi que l'évolution du concept d'identité numérique décentralisée."
+    }
+  ]
+}
   </script>
   <style>
   /* Icônes de réseaux sociaux */
