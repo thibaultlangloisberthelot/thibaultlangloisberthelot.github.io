@@ -357,17 +357,25 @@
     line-height: 1;
   }
 
-    
-
     .media-list {
   margin: 1rem 0 1.5rem;
   padding-left: 1.1rem;
   list-style: disc;
 }
-.media-list li { margin-bottom: 0.65rem; line-height: 1.45; }
-
-
     
+.media-list li { margin-bottom: 0.65rem; line-height: 1.45; }
+.media-details summary {
+  cursor: pointer;
+  list-style: none;
+}
+.media-details summary::-webkit-details-marker { display: none; }
+.media-details summary h3 { display: inline; }
+.media-details summary::after {
+  content: " ▸";
+  font-size: 0.8em;
+}
+.media-details[open] summary::after { content: " ▾"; }
+
 </style>
 
 </head>
@@ -567,7 +575,9 @@ l.textContent="Citations indisponibles";
 </script>
 <!-- ===== Fin compteur ===== -->  
 <br>
-<h3>Dans les médias</h3>
+<!--<h3>Dans les médias</h3>-->  
+ <details class="media-details" open>
+<summary><h3>Dans les médias</h3></summary>       
 <p>
   Ponctuellement sollicité par la presse nationale au sujet des crypto-actifs,
   de la régulation européenne et de la cybercriminalité financière :
@@ -630,8 +640,10 @@ l.textContent="Citations indisponibles";
     <a href="https://www.dailymotion.com/video/x80m1r5?start=615" target="_blank" rel="noopener">
       Intervention sur les crypto-actifs</a>
     — <strong>RTL Radio</strong>
-  </li>
-</ul>
+    </ul>
+</details>
+ <!-- </li>
+</ul>-->
 
    
         <ul class="icons social-icons" aria-label="Réseaux sociaux">
